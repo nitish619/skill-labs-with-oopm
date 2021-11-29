@@ -1,3 +1,4 @@
+// Friend function
 #include<iostream>
 using namespace std;
 
@@ -10,10 +11,7 @@ class Bank{
 		custID=0;
 		balance=0;
 	}
-	/*void insertDetails(){
-		custID=25;
-		balance=15000;
-	}*/
+	
 	
 	void displayDetails(){
 		cout<<"Customer ID is ="<<custID<<endl<<"Account Balance ="<<balance<<endl; 
@@ -34,3 +32,37 @@ int main(){
 	obj.displayDetails();
 	return 0;
 }
+
+
+
+
+// Friend class
+#include <iostream>
+class A {
+private:
+	int a;
+
+public:
+	A() { a = 10; }
+	friend class B; // Friend Class
+};
+
+class B {
+private:
+	int b;
+
+public:
+	void showA (A &x)
+	{
+		// Since B is friend of A, it can access
+		// private members of A
+		std::cout << "A::a=" << x.a;
+	}
+};
+
+int main()
+{
+	A a;
+	B b;
+	b.showA(a);
+	return 0;
